@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl46iyb85o6e5"]
+[gd_scene load_steps=6 format=3 uid="uid://cl46iyb85o6e5"]
 
 [ext_resource type="Texture2D" uid="uid://duf2omyme4l5i" path="res://assets/menu/youWin.png" id="1_7gvu8"]
 [ext_resource type="Script" path="res://scripts/you_win.gd" id="1_ontd7"]
+[ext_resource type="FontFile" uid="uid://1mwmmwkrp1y4" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_p0o5h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3xhj"]
 bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
@@ -63,6 +64,24 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_ovajf")
 text = "Salir"
+
+[node name="Agradecimientos" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 167.0
+offset_top = -26.0
+offset_right = 584.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_p0o5h")
+theme_override_font_sizes/font_size = 15
+text = "Creado por LuisBaena"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
