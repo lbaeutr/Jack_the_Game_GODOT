@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://lvpralu5ky1h"]
+[gd_scene load_steps=62 format=4 uid="uid://lvpralu5ky1h"]
 
 [ext_resource type="PackedScene" uid="uid://q0o2j0argbrp" path="res://scenes/player.tscn" id="1_6n5h8"]
 [ext_resource type="Texture2D" uid="uid://da2uhsi0d4w45" path="res://assets/sprites/Apocalyptic Highway/Apocalyptic Highway/Objects/tilemap.png" id="2_fwjls"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cpg0pf4m2xqea" path="res://scenes/amunnation.tscn" id="17_778ah"]
 [ext_resource type="PackedScene" uid="uid://hx0d050ynu77" path="res://scenes/pausemenu.tscn" id="28_stnb2"]
 [ext_resource type="Script" path="res://scripts/CambioNivel.cs" id="29_7s8pa"]
+[ext_resource type="FontFile" uid="uid://4hbw6l3k453w" path="res://assets/fonts/PixelOperator8.ttf" id="30_ulvco"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyb7m"]
 texture = ExtResource("2_fwjls")
@@ -5797,6 +5798,38 @@ position = Vector2(1260, 44)
 
 [node name="ZombieCharacter7" parent="." instance=ExtResource("6_tbnpg")]
 position = Vector2(1446, 46)
+
+[node name="ExplicacionArma" type="Label" parent="."]
+offset_left = -520.0
+offset_top = -28.0
+offset_right = -412.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("30_ulvco")
+theme_override_font_sizes/font_size = 10
+text = "Elige un arma
+Pulsa Ctrl+ 1
+para disparar"
+
+[node name="ExplicacionPausa" type="Label" parent="."]
+offset_left = -364.0
+offset_top = -28.0
+offset_right = -251.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("30_ulvco")
+theme_override_font_sizes/font_size = 10
+text = "Pausa el juego
+pulsando \"P\""
+
+[node name="ExplicacionMision" type="Label" parent="."]
+offset_left = -218.0
+offset_top = -34.0
+offset_right = 5.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("30_ulvco")
+theme_override_font_sizes/font_size = 10
+text = "Empieza tu aventura
+elimina a todos los enemigos
+para pasar al monstruo final"
 
 [connection signal="body_entered" from="Revolver" to="Revolver" method="_on_body_entered"]
 [connection signal="body_entered" from="Revolver2" to="Revolver2" method="_on_body_entered"]

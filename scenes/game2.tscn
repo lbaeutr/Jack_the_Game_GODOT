@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://c21nbkheamnfw"]
+[gd_scene load_steps=49 format=4 uid="uid://c21nbkheamnfw"]
 
 [ext_resource type="PackedScene" uid="uid://q0o2j0argbrp" path="res://scenes/player.tscn" id="1_b4au0"]
 [ext_resource type="Texture2D" uid="uid://da2uhsi0d4w45" path="res://assets/sprites/Apocalyptic Highway/Apocalyptic Highway/Objects/tilemap.png" id="3_6hm5h"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://hx0d050ynu77" path="res://scenes/pausemenu.tscn" id="19_0rlsf"]
 [ext_resource type="PackedScene" uid="uid://dyc0dg5rab676" path="res://scenes/zombie_character.tscn" id="20_esjpk"]
 [ext_resource type="Script" path="res://scripts/CambioNivel.cs" id="21_h5bmy"]
+[ext_resource type="FontFile" uid="uid://4hbw6l3k453w" path="res://assets/fonts/PixelOperator8.ttf" id="22_8070u"]
 [ext_resource type="PackedScene" uid="uid://di3iqbh18alx1" path="res://scenes/killzone.tscn" id="22_mo6xe"]
 [ext_resource type="PackedScene" uid="uid://b4bwoh5mr7xma" path="res://scenes/shotgun.tscn" id="28_esri7"]
 
@@ -5659,3 +5660,12 @@ position = Vector2(-436, 61)
 
 [node name="CambioNivel" type="Node" parent="."]
 script = ExtResource("21_h5bmy")
+
+[node name="ExplicacionMision" type="Label" parent="."]
+offset_left = -588.0
+offset_top = -4.0
+offset_right = -365.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("22_8070u")
+theme_override_font_sizes/font_size = 10
+text = "Elimina al mostruo final"
