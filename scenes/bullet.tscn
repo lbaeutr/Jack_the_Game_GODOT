@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://r4q1xg7b1ati"]
+
+[ext_resource type="Script" path="res://scripts/Bullet.cs" id="1_wyfc2"]
+[ext_resource type="Texture2D" uid="uid://blwcnxpy55dlt" path="res://assets/sprites/Icons.png" id="2_hlh51"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1860k"]
+atlas = ExtResource("2_hlh51")
+region = Rect2(197, 8, 9, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gngat"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1860k")
+}],
+"loop": true,
+"name": &"Bala",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxptl"]
+size = Vector2(4, 3)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_wyfc2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_gngat")
+animation = &"Bala"
+autoplay = "Bala"
+frame_progress = 0.122767
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_fxptl")

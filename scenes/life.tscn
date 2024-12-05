@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7v1o27x8v0ys"]
+
+[ext_resource type="Texture2D" uid="uid://blwcnxpy55dlt" path="res://assets/sprites/Icons.png" id="1_dm8nn"]
+[ext_resource type="Script" path="res://scripts/Life.cs" id="1_y7s8m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j40wf"]
+atlas = ExtResource("1_dm8nn")
+region = Rect2(0, 32, 17, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ydno7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j40wf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4m2d"]
+size = Vector2(15, 12)
+
+[node name="Life" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_y7s8m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ydno7")
+autoplay = "default"
+frame_progress = 0.301259
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s4m2d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

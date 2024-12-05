@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://8faggkabpva5"]
+
+[ext_resource type="Texture2D" uid="uid://cfn2yvmcifcoc" path="res://assets/sprites/Basic Zombie/Basic Zombie/idle.png" id="1_o1i8v"]
+[ext_resource type="PackedScene" uid="uid://di3iqbh18alx1" path="res://scenes/killzone.tscn" id="2_ebcdo"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_i63f2"]
+script/source = "using Godot;
+using System;
+
+public partial class Zombie : Node2D
+{
+	
+	[Export]
+	public float Speed = 100.0f;
+	private Player player;
+	
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+				player = GetParent().GetNode<Player>(\"Player\");
+
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		
+		if (player != null)
+		{
+			Vector2 direction = (player.GlobalPosition - GlobalPosition).Normalized();
+			Position += direction * Speed * (float)delta;
+		}
+	}
+}
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n8ix"]
+atlas = ExtResource("1_o1i8v")
+region = Rect2(0, 0, 112, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58ib2"]
+atlas = ExtResource("1_o1i8v")
+region = Rect2(112, 0, 112, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smrwf"]
+atlas = ExtResource("1_o1i8v")
+region = Rect2(224, 0, 112, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1alc"]
+atlas = ExtResource("1_o1i8v")
+region = Rect2(336, 0, 112, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka5p2"]
+atlas = ExtResource("1_o1i8v")
+region = Rect2(448, 0, 112, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6efs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n8ix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58ib2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smrwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1alc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka5p2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvwaw"]
+size = Vector2(20, 25)
+
+[node name="Zombie" type="Node2D"]
+script = SubResource("CSharpScript_i63f2")
+Speed = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p6efs")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.17745
+
+[node name="Killzone" parent="." instance=ExtResource("2_ebcdo")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_jvwaw")

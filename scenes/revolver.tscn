@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://butumrm1p2bho"]
+
+[ext_resource type="Texture2D" uid="uid://blwcnxpy55dlt" path="res://assets/sprites/Icons.png" id="1_roykf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shp3p"]
+atlas = ExtResource("1_roykf")
+region = Rect2(78, 112, 18, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n18k7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shp3p")
+}],
+"loop": true,
+"name": &"revolver_imagen",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0ekk"]
+size = Vector2(15, 10)
+
+[node name="Revolver" type="Area2D"]
+collision_mask = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n18k7")
+animation = &"revolver_imagen"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_n0ekk")
