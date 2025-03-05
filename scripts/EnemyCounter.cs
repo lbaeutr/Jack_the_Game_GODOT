@@ -3,33 +3,27 @@ using System;
 
 public partial class EnemyCounter : Label
 {
-	private int enemyCount = 7; // Contador de enemigos
+	private int score = 0; // Puntuación inicial
 
 	public override void _Ready()
 	{
-		UpdateLabel();
+		UpdateScore();
 	}
 
-	private void UpdateLabel()
+	private void UpdateScore()
 	{
-		Text = "Enemies: " + enemyCount;
+		Text = "Score: " + score;
 	}
 
-	public void IncreaseCount()
+	public void AddPoints(int points)
 	{
-		enemyCount++;
-		UpdateLabel();
+		score += points;
+		UpdateScore();
 	}
 
-	public void DecreaseCount()
+	public void ResetScore()
 	{
-		enemyCount = Mathf.Max(0, enemyCount - 1); // Evita valores negativos
-		UpdateLabel();
-	}
-
-	public void ResetCount()
-	{
-		enemyCount = 0;
-		UpdateLabel();
+		score = 0;
+		UpdateScore();
 	}
 }

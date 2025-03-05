@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://c21nbkheamnfw"]
+[gd_scene load_steps=50 format=4 uid="uid://c21nbkheamnfw"]
 
 [ext_resource type="PackedScene" uid="uid://q0o2j0argbrp" path="res://scenes/player.tscn" id="1_b4au0"]
 [ext_resource type="Texture2D" uid="uid://da2uhsi0d4w45" path="res://assets/sprites/Apocalyptic Highway/Apocalyptic Highway/Objects/tilemap.png" id="3_6hm5h"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://fqlajgatjax3" path="res://assets/sprites/Apocalyptic Highway/Apocalyptic Highway/Objects/Street Lamp.png" id="16_hjppu"]
 [ext_resource type="Texture2D" uid="uid://ecieujqk8eyk" path="res://assets/sprites/Apocalyptic Highway/Apocalyptic Highway/Objects/Trash.png" id="17_akh56"]
 [ext_resource type="PackedScene" uid="uid://hx0d050ynu77" path="res://scenes/pausemenu.tscn" id="19_0rlsf"]
+[ext_resource type="Script" path="res://scripts/EnemyCounter.cs" id="19_tsj1j"]
 [ext_resource type="PackedScene" uid="uid://dyc0dg5rab676" path="res://scenes/zombie_character.tscn" id="20_esjpk"]
 [ext_resource type="Script" path="res://scripts/CambioNivel.cs" id="21_h5bmy"]
 [ext_resource type="FontFile" uid="uid://4hbw6l3k453w" path="res://assets/fonts/PixelOperator8.ttf" id="22_8070u"]
@@ -5650,6 +5651,15 @@ offset_left = 9.0
 offset_top = -63.0
 offset_right = 9.0
 offset_bottom = -63.0
+
+[node name="Label" type="Label" parent="Player2/Camera2D"]
+offset_left = -247.0
+offset_top = -256.0
+offset_right = -164.0
+offset_bottom = -233.0
+text = "Score: 0
+"
+script = ExtResource("19_tsj1j")
 
 [node name="ZombieCharacter" parent="." instance=ExtResource("20_esjpk")]
 position = Vector2(312, -153)

@@ -5682,7 +5682,8 @@ offset_left = -247.0
 offset_top = -256.0
 offset_right = -164.0
 offset_bottom = -233.0
-text = "Enemies: x"
+text = "Score: 0
+"
 script = ExtResource("3_khg2v")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

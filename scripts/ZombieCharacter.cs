@@ -25,9 +25,33 @@ public partial class ZombieCharacter : CharacterBody2D
 	private CambioNivel cambioNivel;
 	private Area2D attackArea;
 
+	private EnemyCounter enemyCounter;
+
+
 	// Método llamado cuando el nodo está listo
-	public override void _Ready()
+	public override async void _Ready()
 	{
+
+		// Esperar a que se procese el frame
+		await ToSignal(GetTree(), "process_frame");
+		await ToSignal(GetTree(), "process_frame");
+
+		if (GetTree().CurrentScene.Name == "Game")
+		{
+			enemyCounter = GetNode<EnemyCounter>("/root/Game/Player/Camera2D/Label");
+		}
+		else
+		{
+			enemyCounter = GetNode<EnemyCounter>("/root/Node2D/Player2/Camera2D/Label");
+		}
+
+
+		if (enemyCounter == null)
+		{
+			GD.PrintErr("❌ ERROR: No se encontró el Label para la puntuación.");
+		}
+
+
 		// Verificar si la escena actual es "Game"
 		if (GetTree().CurrentScene.Name == "Game")
 		{
@@ -114,6 +138,11 @@ public partial class ZombieCharacter : CharacterBody2D
 		animation.Play("Die");
 		GD.Print("Zombie muerto!");
 		deathTimer.Start();
+
+		if (enemyCounter != null)
+		{
+			enemyCounter.AddPoints(10); // 🏆 Suma 10 puntos por cada zombi muerto
+		}
 
 		if (cambioNivel != null)
 		{

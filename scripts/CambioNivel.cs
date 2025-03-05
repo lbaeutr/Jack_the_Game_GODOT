@@ -9,22 +9,34 @@ public partial class CambioNivel : Node
 	private bool isFirstScene; // Para saber si es la primera escena o no
 
 	private EnemyCounter enemyCounter;
+	private EnemyCounter enemyCounter2;
 
 	// Método llamado cuando el nodo está listo
-	public override void _Ready()
+	public override async void _Ready()
 	{
 		// Si es la primera escena, la lógica de inicio estará activa.
 		isFirstScene = (GetTree().CurrentScene.Name == "Game");
 		GD.Print(isFirstScene);
 
+		await ToSignal(GetTree(),"process_frame");
 
-		isFirstScene = (GetTree().CurrentScene.Name == "Game");
-		enemyCounter = GetNode<EnemyCounter>("/root/Game/Player/Camera2D/Label");
 
-		// Reiniciar el contador en la UI al comenzar una nueva escena
-		if (enemyCounter != null)
+		if (isFirstScene)
 		{
-			enemyCounter.ResetCount();
+			enemyCounter = GetNode<EnemyCounter>("/root/Game/Player/Camera2D/Label");
+		}
+		else
+		{
+			enemyCounter = GetNode<EnemyCounter>("/root/Node2D/Player2/Camera2D/Label");
+		}
+
+		if (enemyCounter == null)
+		{
+			GD.PrintErr(" No se encontró el Label para la puntuación.");
+		}
+		else
+		{
+			enemyCounter.ResetScore(); // Reiniciar puntuación al inicio del nivel
 		}
 	}
 
@@ -34,11 +46,6 @@ public partial class CambioNivel : Node
 		zombiesVivos++; // Incrementa el contador de zombis vivos
 		GD.Print($"Zombis vivos: {zombiesVivos}");
 
-
-		if (enemyCounter != null)
-		{
-			enemyCounter.IncreaseCount();
-		}
 	}
 
 	// Método para notificar cuando un zombi muere
@@ -47,10 +54,16 @@ public partial class CambioNivel : Node
 		zombiesVivos--; // Decrementa el contador de zombis vivos
 		GD.Print($"Zombi muerto. Zombis vivos: {zombiesVivos}");
 
+		// Sumar 10 puntos al marcador en pantalla
 		if (enemyCounter != null)
 		{
-			enemyCounter.DecreaseCount();
+			//enemyCounter.AddPoints(10);
 		}
+		else
+		{
+			GD.PrintErr("No se encontró el Label para la puntuación.");
+		}
+
 
 		// Si no quedan zombis vivos y es la primera escena, cambiar de escena
 		if (zombiesVivos <= 0)
