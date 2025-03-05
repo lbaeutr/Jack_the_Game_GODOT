@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://pm1ywl5r6hkv"]
+
+[ext_resource type="Script" path="res://scripts/EnemyCounter.cs" id="1_y4cvx"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Enemies: x"
+script = ExtResource("1_y4cvx")

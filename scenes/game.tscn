@@ -1,7 +1,8 @@
-[gd_scene load_steps=62 format=4 uid="uid://lvpralu5ky1h"]
+[gd_scene load_steps=63 format=4 uid="uid://lvpralu5ky1h"]
 
 [ext_resource type="PackedScene" uid="uid://q0o2j0argbrp" path="res://scenes/player.tscn" id="1_6n5h8"]
 [ext_resource type="Texture2D" uid="uid://da2uhsi0d4w45" path="res://assets/sprites/Apocalyptic Highway/Apocalyptic Highway/Objects/tilemap.png" id="2_fwjls"]
+[ext_resource type="Script" path="res://scripts/EnemyCounter.cs" id="3_khg2v"]
 [ext_resource type="Texture2D" uid="uid://bwqt8mcnue8v1" path="res://assets/sprites/Apocalyptic Highway/Apocalyptic Highway/Objects/billboard1.png" id="3_y785s"]
 [ext_resource type="Texture2D" uid="uid://fqlajgatjax3" path="res://assets/sprites/Apocalyptic Highway/Apocalyptic Highway/Objects/Street Lamp.png" id="4_n7lcg"]
 [ext_resource type="Texture2D" uid="uid://ecieujqk8eyk" path="res://assets/sprites/Apocalyptic Highway/Apocalyptic Highway/Objects/Trash.png" id="5_5djwt"]
@@ -5675,6 +5676,14 @@ offset_left = 9.0
 offset_top = -63.0
 offset_right = 9.0
 offset_bottom = -63.0
+
+[node name="Label" type="Label" parent="Player/Camera2D"]
+offset_left = -247.0
+offset_top = -256.0
+offset_right = -164.0
+offset_bottom = -233.0
+text = "Enemies: x"
+script = ExtResource("3_khg2v")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(1, 1)
