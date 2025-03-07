@@ -141,7 +141,9 @@ public partial class ZombieCharacter : CharacterBody2D
 
 		if (enemyCounter != null)
 		{
-			enemyCounter.AddPoints(10); // 🏆 Suma 10 puntos por cada zombi muerto
+			//enemyCounter.AddPoints(10); // 🏆 Suma 10 puntos por cada zombi muerto
+			ScoreManager.Instance.AddPoints(10);
+
 		}
 
 		if (cambioNivel != null)

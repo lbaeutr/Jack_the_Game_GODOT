@@ -36,8 +36,15 @@ public partial class CambioNivel : Node
 		}
 		else
 		{
-			enemyCounter.ResetScore(); // Reiniciar puntuación al inicio del nivel
+			//enemyCounter.ResetScore(); // Reiniciar puntuación al inicio del nivel
 		}
+
+		if (enemyCounter != null)
+		{
+			GD.Print("🔄 Restaurando puntuación en Game2: " + ScoreManager.Instance.GetScore());
+			enemyCounter.AddPoints(0); // Forzar actualización del Label
+		}
+
 	}
 
 	// Método para registrar un zombi
@@ -58,6 +65,8 @@ public partial class CambioNivel : Node
 		if (enemyCounter != null)
 		{
 			//enemyCounter.AddPoints(10);
+			//ScoreManager.Instance.AddPoints(10);
+
 		}
 		else
 		{

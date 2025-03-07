@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl46iyb85o6e5"]
+[gd_scene load_steps=8 format=3 uid="uid://cl46iyb85o6e5"]
 
 [ext_resource type="Texture2D" uid="uid://duf2omyme4l5i" path="res://assets/menu/youWin.png" id="1_7gvu8"]
 [ext_resource type="Script" path="res://scripts/you_win.gd" id="1_ontd7"]
@@ -9,6 +9,11 @@ bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovajf"]
 bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pva8p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hj3n"]
+bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 
 [node name="YouWin" type="Control"]
 layout_mode = 3
@@ -33,6 +38,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -119.0
+offset_top = -170.0
+offset_right = 35.0
+offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_7gvu8")
@@ -45,10 +54,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = 113.0
-offset_right = 200.0
-offset_bottom = 289.0
+offset_left = 250.0
+offset_top = 55.0
+offset_right = 510.0
+offset_bottom = 215.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 22
@@ -83,5 +92,51 @@ theme_override_font_sizes/font_size = 15
 text = "Creado por LuisBaena"
 horizontal_alignment = 1
 
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 345.0
+offset_right = 390.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(0.858824, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pva8p")
+text = "Tu Puntuación :"
+
+[node name="InitialsInput" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 416.0
+offset_right = 267.0
+offset_bottom = 473.0
+theme_override_colors/font_color = Color(0.998311, 0.994494, 0.995705, 1)
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Ingresa tus iniciales"
+max_length = 3
+
+[node name="SaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 487.0
+offset_right = 265.0
+offset_bottom = 544.0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_8hj3n")
+text = "Guardar"
+
+[node name="ScoreDisplay" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 354.0
+offset_right = 790.0
+offset_bottom = 604.0
+theme_override_colors/default_color = Color(0.788235, 0.0392157, 0.0352941, 1)
+theme_override_font_sizes/normal_font_size = 20
+
+[node name="APIRequest" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="request_completed" from="APIRequest" to="." method="_on_api_request_request_completed"]
