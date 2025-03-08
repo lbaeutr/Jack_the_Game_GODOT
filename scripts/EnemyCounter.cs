@@ -11,20 +11,20 @@ public partial class EnemyCounter : Label
 
 		if (ScoreManager.Instance == null)
 		{
-			GD.PrintErr("❌ ERROR: ScoreManager no está disponible en EnemyCounter.");
+			GD.PrintErr("ERROR: ScoreManager no está disponible en EnemyCounter.");
 		}
 		else
 		{
-			GD.Print("✅ Conectando EnemyCounter al ScoreManager en Game2.");
+			GD.Print("Conectando EnemyCounter al ScoreManager en Game2.");
 
-			// ✅ Conectar al Signal solo si existe
+			// Conectar al Signal solo si existe
 			if (ScoreManager.Instance.HasSignal("ScoreUpdatedEventHandler"))
 			{
 				ScoreManager.Instance.Connect("ScoreUpdatedEventHandler", new Callable(this, nameof(UpdateScore)));
 			}
 			else
 			{
-				GD.PrintErr("❌ ERROR: No se pudo conectar al Signal 'ScoreUpdatedEventHandler'.");
+				GD.PrintErr("ERROR: No se pudo conectar al Signal 'ScoreUpdatedEventHandler'.");
 			}
 		}
 	}
@@ -35,11 +35,11 @@ public partial class EnemyCounter : Label
 		if (ScoreManager.Instance != null)
 		{
 			Text = "Score: " + ScoreManager.Instance.GetScore();
-			GD.Print("📢 Actualizando Label: " + Text);
+			GD.Print("Actualizando Label: " + Text);
 		}
 		else
 		{
-			GD.PrintErr("❌ ERROR: No se pudo obtener la puntuación en EnemyCounter.");
+			GD.PrintErr("ERROR: No se pudo obtener la puntuación en EnemyCounter.");
 		}
 	}
 

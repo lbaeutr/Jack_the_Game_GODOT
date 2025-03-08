@@ -48,7 +48,7 @@ public partial class ZombieCharacter : CharacterBody2D
 
 		if (enemyCounter == null)
 		{
-			GD.PrintErr("❌ ERROR: No se encontró el Label para la puntuación.");
+			GD.PrintErr("ERROR: No se encontró el Label para la puntuación.");
 		}
 
 
@@ -141,14 +141,16 @@ public partial class ZombieCharacter : CharacterBody2D
 
 		if (enemyCounter != null)
 		{
-			//enemyCounter.AddPoints(10); // 🏆 Suma 10 puntos por cada zombi muerto
-			ScoreManager.Instance.AddPoints(10);
+			//enemyCounter.AddPoints(10); //  Suma 10 puntos por cada zombi muerto
+			ScoreManager.Instance.AddPoints(10);//  Suma 10 puntos por cada zombi muerto
 
 		}
 
 		if (cambioNivel != null)
 		{
-			cambioNivel.NotifyZombieDeath(this);
+			//cambioNivel.NotifyZombieDeath(this,);
+			cambioNivel.NotifyZombieDeath(this, player.currentWeapon.GetType().Name.ToLower());
+
 		}
 	}
 

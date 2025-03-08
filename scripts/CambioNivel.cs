@@ -56,23 +56,43 @@ public partial class CambioNivel : Node
 	}
 
 	// Método para notificar cuando un zombi muere
-	public void NotifyZombieDeath(ZombieCharacter zombie)
+	public void NotifyZombieDeath(ZombieCharacter zombie, string weapon)
 	{
 		zombiesVivos--; // Decrementa el contador de zombis vivos
 		GD.Print($"Zombi muerto. Zombis vivos: {zombiesVivos}");
 
-		// Sumar 10 puntos al marcador en pantalla
+		int points = 0;
+
+		// Asigna puntos según el arma utilizada
+		switch (weapon)
+		{
+			case "revolver":
+				points = GD.RandRange(0, 11);
+				GD.Print(points + " puntos esto es prueba de revolver");
+				break;
+			case "shotgun":
+				points = GD.RandRange(0, 11);
+				GD.Print(points + " puntos esto es prueba de escopeta");
+
+				break;
+
+			default:
+				points = 5; // Puntuación por defecto
+				break;
+		}
+
+		// Sumar puntos al marcador en pantalla
 		if (enemyCounter != null)
 		{
-			//enemyCounter.AddPoints(10);
-			//ScoreManager.Instance.AddPoints(10);
+			enemyCounter.AddPoints(points);
+			//ScoreManager.Instance.AddPoints(points);
 
+			//todo ver como manejar esto para que se sumen los puntos en el marcador
 		}
 		else
 		{
 			GD.PrintErr("No se encontró el Label para la puntuación.");
 		}
-
 
 		// Si no quedan zombis vivos y es la primera escena, cambiar de escena
 		if (zombiesVivos <= 0)
